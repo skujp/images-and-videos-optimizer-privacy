@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storage Space Saver</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #2563eb;
+            --accent-hover: #3b82f6;
+        }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0.5rem 0.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        footer {
+            text-align: center;
+            margin-top: 1rem;
+        }
+        .scroll-down {
+            position: fixed;
+            left: 50%;
+            bottom: 1rem;
+            transform: translateX(-50%);
+            display: inline-flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 0.1rem;
+            padding: 0.25rem 0.35rem;
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: opacity 0.25s ease, transform 0.25s ease;
+            opacity: 1;
+            z-index: 10;
+        }
+        .scroll-down span {
+            display: block;
+            line-height: 1;
+        }
+        .scroll-down:hover {
+            opacity: 0.8;
+        }
+        .scroll-down.hidden {
+            opacity: 0;
+            transform: translate(-50%, 10px);
+            pointer-events: none;
+        }
+        @keyframes scrollBounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(6px); }
+        }
+        .scroll-down {
+            animation: scrollBounce 1.5s infinite;
+        }
+        @media (max-width: 500px) {
+            .scroll-down {
+                font-size: 1rem;
+                bottom: 0.75rem;
+            }
+        }
+        h1 { margin-bottom: 0.5rem; }
+        p { color: var(--text-muted); margin: 0; }
+        .container {
+            max-width: 1100px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 2.5rem;
+        }
+        @media (max-width: 500px) {
+            .container { grid-template-columns: 1fr; }
+        }
+        .app-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+        }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            background: #000;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.75rem;
+            margin-top: auto;
+        }
+        .btn {
+            background-color: var(--accent);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            padding: 0.75rem 0.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+        .btn:hover { background-color: var(--accent-hover); }
+
+        #images-optimizer-not-available {
+            display: none;
+        }
+
+        #images-optimizer-not-available:target {
+            display: block;
+        }
+
+        #videos-optimizer-not-available {
+            display: none;
+        }
+
+        #videos-optimizer-not-available:target {
+            display: block;
+        }
+
+        /* Container for logo and text alignment */
+        .title-container {
+        display: flex;
+        align-items: center; /* Vertically centers the logo with the text */
+        gap: 0.75rem;        /* Space between the logo and the text */
+        margin-bottom: 0px;  /* Eliminates default spacing conflicts */
+        }
+
+        /* Forces the h2 margin to cooperate with the flex layout */
+        .title-container h2 {
+        margin: 0; 
+        }
+
+        /* Adjust logo size to perfectly match the h2 text height */
+        .app-logo {
+        height: 2rem;        
+        width: auto;
+        object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>The Optimizer</h1>
+        <p>Compress 500 GB of photos & videos into a 64 GB USB — best quality, original, free (ver 3.3.3)</p>
+    </header>
+
+    <div class="container">
+        <!-- SOFTWARE 1 -->
+        <div class="app-card">
+            <div class="title-container">
+                <img src="./images_optimizer_logo.png" alt="Images Optimizer Logo" class="app-logo">
+                <h2>Images Optimizer</h2>
+            </div>
+            <p style="margin-bottom: 1.5rem;">Batch compress images to target size (KBs) with best quality</p>
+            
+            <div class="video-container">
+                <!-- Replace VIDEO_ID_1 with your YouTube video ID -->
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/Kk8tV8446gA?si=fiQsS-GB2yKieSND" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+
+            <div class="download-grid">
+                <!-- Replace links with your actual GitHub release asset URLs -->
+                <a href="#images-optimizer-not-available" class="btn">🍏 MacOS 10.13+</a>
+                <a href="https://apps.microsoft.com/detail/xp9k91nk3lnm53?hl=en-US&gl=VN" class="btn">🪟 Windows 10/11</a>
+                <a href="https://github.com/skujp/images-and-videos-optimizer-privacy/releases/download/linux/image_optimizer_x64.AppImage" class="btn">🐧 Linux X11+</a>
+            </div>
+
+            <p id="images-optimizer-not-available" style="text-align: left; color: #ffff00;">Check back soon!</p>
+
+        </div>
+
+        <!-- SOFTWARE 2 -->
+        <div class="app-card">
+            <div class="title-container">
+                <img src="./videos_optimizer_logo.png" alt="Videos Optimizer Logo" class="app-logo">
+                <h2>Videos Optimizer</h2>
+            </div>
+            <p style="margin-bottom: 1.5rem;">Batch compress videos to target size (KBs) with best quality</p>
+            
+            <div class="video-container">
+                <!-- Replace VIDEO_ID_2 with your YouTube video ID -->
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/N6tft5bt7IY?si=fdq85_17yEOULNej" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+
+            <div class="download-grid">
+                <!-- Replace links with your actual GitHub release asset URLs -->
+                <a href="https://github.com/skujp/images-and-videos-optimizer-privacy/releases/download/macos/VideosOptimizer.dmg" class="btn">🍏 MacOS 10.13+</a>
+                <a href="https://apps.microsoft.com/detail/xp8kcp4ww001ff?hl=en-US&gl=VN" class="btn">🪟 Windows 10/11</a>
+                <a href="#videos-optimizer-not-available" class="btn">🐧 Linux X11+</a>
+            </div>
+
+            <p id="videos-optimizer-not-available" style="text-align: right; color: #ffff00;">Check back soon!</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 <a href="https://apps.microsoft.com/search/publisher?name=DevToolsOwner&hl=en-US&gl=VN">DevToolsOwner</a> — personal use only, commercial use requires approval</p>
+    </footer>
+
+    <a href="#qa" class="scroll-down" aria-label="Scroll to FAQ">FAQ<span>⌄</span></a>
+
+    <section id="qa" style="max-width:1100px; width:100%; padding:3rem 0; text-align:left;">
+        <h2 style="text-align: center;">Frequently Asked Questions</h2>
+        <div style="background-color: var(--card-bg); border-radius: 12px; padding: 1.5rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);">
+            <p><strong>Q:</strong> [Windows] What to do if “Unauthorized changes blocked” notification appears?</p>
+            <p><strong>A:</strong> The apps needs access to the folder they are trying to modify. Go to Settings > Allowed Apps > Add an allowed app > Optimizer Apps.exe <img src="./allow_apps.png" alt="Fix Unauthorized Changes Notification" style="max-width: 100%; height: auto;"><img src="./images_videos_optimizer_windows_demo.jpg" alt="Images Optimizer and Videos Optimizer for Windows" style="max-width: 100%; height: auto;"></p>
+        </div>
+    </section>
+
+    <section id="qa" style="max-width:1100px; width:100%; padding:3rem 0; text-align:left;">
+        <div style="background-color: var(--card-bg); border-radius: 12px; padding: 1.5rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);">
+            <p><strong>Q:</strong> [MacOS] What to do if "blocked from use because it is not from an identified developer" notification appears?</p>
+            <p><strong>A:</strong> The apps needs your approval. Go to System Preferences > Security & Privacy > Security > Open Anyway 
+            <p><strong>Q:</strong> [MacOS] Why is there no Images Optimizer for the Mac? </strong></p>
+            <p><strong>A:</strong> Images Optimizer is available on Windows and Linux. A Mac version is coming soon. In the meantime, enjoy Videos Optimizer. <img src="./videos_optimizer_mac_demo.jpg" alt="Videos Optimizer for Mac" style="max-width: 100%; height: auto;"></p>
+        </div>
+    </section>
+
+    <section id="qa" style="max-width:1100px; width:100%; padding:3rem 0; text-align:left;">
+        <div style="background-color: var(--card-bg); border-radius: 12px; padding: 1.5rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);">
+            <p><strong>Q:</strong> [Linux] Why is there no Videos Optimizer for Linux? </strong></p>
+            <p><strong>A:</strong> Videos Optimizer is available on Windows and Mac. A Linux version is coming soon. In the meantime, enjoy Images Optimizer. <img src="./images_optimizer_linux_demo.jpg" alt="Images Optimizer for Linux" style="max-width: 100%; height: auto;"></p>
+        </div>
+    </section>
+
+    <script>
+        const indicator = document.querySelector('.scroll-down');
+        const hideThreshold = 40;
+        window.addEventListener('scroll', () => {
+            if (!indicator) return;
+            if (window.pageYOffset > hideThreshold) {
+                indicator.classList.add('hidden');
+            } else {
+                indicator.classList.remove('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
