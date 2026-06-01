@@ -149,6 +149,10 @@
             display: block;
         }
 
+        #qa:target ~ #faq {
+            display: none;
+        }
+
         /* Container for logo and text alignment */
         .title-container {
         display: flex;
@@ -230,8 +234,6 @@
         <p>© 2026 <a href="https://apps.microsoft.com/search/publisher?name=DevToolsOwner&hl=en-US&gl=VN">DevToolsOwner</a> — personal use only, commercial use requires approval</p>
     </footer>
 
-    <a href="#qa" class="scroll-down" aria-label="Scroll to FAQ">FAQ<span>⌄</span></a>
-
     <section id="qa" style="max-width:1100px; width:100%; padding:3rem 0; text-align:left;">
         <h2 style="text-align: center;">Frequently Asked Questions</h2>
         <div style="background-color: var(--card-bg); border-radius: 12px; padding: 1.5rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);">
@@ -256,17 +258,7 @@
         </div>
     </section>
 
-    <script>
-        const indicator = document.querySelector('.scroll-down');
-        const hideThreshold = 40;
-        window.addEventListener('scroll', () => {
-            if (!indicator) return;
-            if (window.pageYOffset > hideThreshold) {
-                indicator.classList.add('hidden');
-            } else {
-                indicator.classList.remove('hidden');
-            }
-        });
-    </script>
+    <a href="#qa" class="scroll-down" aria-label="Scroll to FAQ" id="faq">↓ FAQ ↑</a>
+
 </body>
 </html>
